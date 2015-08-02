@@ -2,7 +2,7 @@
 " Filename: autoload/tmpbuffer.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2015/07/27 06:03:49.
+" Last Change: 2015/07/27 07:05:30.
 " =============================================================================
 
 let s:save_cpo = &cpo
@@ -26,7 +26,7 @@ function! tmpbuffer#start(args) abort
   silent! 0put=redir
   silent! $ delete _
   silent! 1 delete _
-  setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted
+  setlocal filetype= buftype=nofile bufhidden=wipe noswapfile nobuflisted
 endfunction
 
 let &cpo = s:save_cpo
