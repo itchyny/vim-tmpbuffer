@@ -2,7 +2,7 @@
 " Filename: autoload/tmpbuffer.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2015/11/23 02:00:02.
+" Last Change: 2015/11/26 08:47:56.
 " =============================================================================
 
 let s:save_cpo = &cpo
@@ -19,13 +19,12 @@ function! tmpbuffer#start(args) abort
   endif
   let b:tmpbuffer = 1
   let command = usesystem ? 'echo system(' . string(join(a:args)) . ')' : join(a:args)
-  redir => redir
+  redir => out
     execute 'silent!' command
   redir END
   silent! % delete _
-  silent! 0put=redir
-  silent! $ delete _
-  silent! 1 delete _
+  silent! $ put=out
+  silent! 1,2 delete _
   setlocal filetype= buftype=nofile bufhidden=wipe noswapfile nobuflisted
 endfunction
 
