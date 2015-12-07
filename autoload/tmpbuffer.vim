@@ -2,7 +2,7 @@
 " Filename: autoload/tmpbuffer.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2015/11/26 08:47:56.
+" Last Change: 2015/12/08 08:50:32.
 " =============================================================================
 
 let s:save_cpo = &cpo
@@ -13,7 +13,7 @@ function! tmpbuffer#start(args) abort
     return
   endif
   let cmd = a:args[0]
-  let usesystem = executable(cmd) || !exists(':' . cmd)
+  let usesystem = cmd !~# '^:' && (executable(cmd) || !exists(':' . substitute(cmd, '^:*', '', 'g')))
   if !get(b:, 'tmpbuffer') && ((&filetype !=# '') || &modified || bufname('') !=# '')
     vnew
   endif
