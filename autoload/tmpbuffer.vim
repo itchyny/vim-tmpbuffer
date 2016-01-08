@@ -2,18 +2,18 @@
 " Filename: autoload/tmpbuffer.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2015/12/08 08:50:32.
+" Last Change: 2016/01/08 12:15:19.
 " =============================================================================
 
 let s:save_cpo = &cpo
 set cpo&vim
 
-function! tmpbuffer#start(args) abort
+function! tmpbuffer#start(bang, args) abort
   if len(a:args) < 1
     return
   endif
   let cmd = a:args[0]
-  let usesystem = cmd !~# '^:' && (executable(cmd) || !exists(':' . substitute(cmd, '^:*', '', 'g')))
+  let usesystem = a:bang || cmd !~# '^:' && (executable(cmd) || !exists(':' . substitute(cmd, '^:*', '', 'g')))
   if !get(b:, 'tmpbuffer') && ((&filetype !=# '') || &modified || bufname('') !=# '')
     vnew
   endif
