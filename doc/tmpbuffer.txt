@@ -1,0 +1,49 @@
+*tmpbuffer.txt*	Execute commands and print the result in a temporal buffer
+
+Version: 0.0
+Author: itchyny (https://github.com/itchyny)
+License: MIT License
+Repository: https://github.com/itchyny/vim-tmpbuffer
+Last Change: 2016/01/11 17:45:31.
+
+CONTENTS					*tmpbuffer-contents*
+
+Introduction				|tmpbuffer-introduction|
+Commands				|tmpbuffer-commands|
+Changelog				|tmpbuffer-changelog|
+
+==============================================================================
+INTRODUCTION					*tmpbuffer-introduction*
+
+The *tmpbuffer* plugin provides a command to execute a Vim command or an
+external command and print the result in a temporal buffer.
+
+------------------------------------------------------------------------------
+COMMANDS					*tmpbuffer-commands*
+
+:Tmpbuffer[!] [command]
+						*:Tmpbuffer*
+	Executes the command given by the argument and print the result in a
+	temporal buffer. If the current buffer is already the buffer tmpbuffer
+	opened, the buffer is used without opening a new buffer.
+>
+	Example:
+		:Tmpbuffer scriptnames
+		:Tmpbuffer git log
+		:Tmpbuffer git status
+		:Tmpbuffer git diff | set filetype=diff
+		" external command has priority over Vim command
+		:Tmpbuffer ls
+		" colon tells tmpbuffer to regard it as a Vim command
+		:Tmpbuffer :ls
+		" bang tells tmpbuffer to regard it as an external command
+		:Tmpbuffer! ls
+<
+==============================================================================
+CHANGELOG					*tmpbuffer-changelog*
+
+0.0	2015-07-27 -
+	- Initial commit and implementation
+
+==============================================================================
+vim:tw=78:sw=4:ts=8:ft=help:norl:noet:
