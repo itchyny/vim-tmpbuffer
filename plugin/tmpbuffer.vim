@@ -2,10 +2,10 @@
 " Filename: plugin/tmpbuffer.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2016/01/11 17:16:18.
+" Last Change: 2024/06/22 20:50:39.
 " =============================================================================
 
-if exists('g:loaded_tmpbuffer') || v:version < 700
+if exists('g:loaded_tmpbuffer') || v:version < 800
   finish
 endif
 let g:loaded_tmpbuffer = 1
